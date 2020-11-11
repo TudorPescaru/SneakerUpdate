@@ -83,7 +83,8 @@ def footshop_raffle(link: BeautifulSoup) -> list:
     containers = link.find_all('div', 
             class_=re.compile('container active-or-coming-soon'))
     for container in containers:
-        cards = container.find_all('div', class_=re.compile('card.*active'))
+        cards = container.find_all('div', class_=re.compile('card.*closing-soon'))
+        cards += container.find_all('div', class_=re.compile('card.*active'))
         for card in cards:
             sneaker = []
             model = card.find('div', class_=re.compile('model'))
